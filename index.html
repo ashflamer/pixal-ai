@@ -117,7 +117,7 @@
                 let data = await response.json();
                 let botResponse = data.choices[0].message.content || "Sorry, PIXAL AI couldn't understand that.";
 
-                if (userInput.toLowerCase().includes("who made you")) || (lowerInput.includes("who created you") || lowerInput.includes("how were you created") || lowerInput.includes("how were you made")) || (userInput.toLowerCase().includes("who is your owner")) {
+                if (userInput.toLowerCase().includes("who made you")) {
                     botResponse = "I am PIXAL AI, made by Ashwin ";
                 }
 
