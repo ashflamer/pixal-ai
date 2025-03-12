@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
     <!-- PIXAL AI SEO Meta Tags -->
-<meta name="description" content="PIXAL AI is a free AI chatbot made by Ashwin. Chat with PIXAL AI for smart conversations and instant answers!">
-<meta name="keywords" content="PIXAL AI, AI Chatbot, Chatbot Online, AI Chat, Groq API Chatbot, Ashwin Chatbot, PIXAL GPT, ChatGPT Alternative">
-<meta name="author" content="Ashwin">
-<meta name="robots" content="index, follow">
-<meta property="og:title" content="PIXAL AI - Official Chatbot">
-<meta property="og:description" content="PIXAL AI is a smart AI chatbot built by Ashwin. Start chatting now!">
-<meta property="og:url" content="https://ashflamer.github.io/pixal-ai/">
-<meta property="og:type" content="website">
-<meta property="og:image" content="https://ashflamer.github.io/pixal-ai/logo.png">
+    <meta name="description" content="PIXAL AI is a free AI chatbot made by Ashwin. Chat with PIXAL AI for smart conversations and instant answers!">
+    <meta name="keywords" content="PIXAL AI, AI Chatbot, Chatbot Online, AI Chat, Groq API Chatbot, Ashwin Chatbot, PIXAL GPT, ChatGPT Alternative">
+    <meta name="author" content="Ashwin">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PIXAL AI - Official Chatbot">
+    <meta property="og:description" content="PIXAL AI is a smart AI chatbot built by Ashwin. Start chatting now!">
+    <meta property="og:url" content="https://ashflamer.github.io/pixal-ai/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://ashflamer.github.io/pixal-ai/logo.png">
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -70,7 +70,7 @@
 </head>
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <body>
+<body>
     <h1>Welcome to PIXAL AI ⚛</h1>
     <p>Your Official AI Chatbot Powered by Groq API</p>
     <input type="text" id="userInput" placeholder="Ask PIXAL Anything...">
@@ -117,8 +117,10 @@
                 let data = await response.json();
                 let botResponse = data.choices[0].message.content || "Sorry, PIXAL AI couldn't understand that.";
 
-                if (userInput.toLowerCase().includes("who made you")) {
-                    botResponse = "I am PIXAL AI, made by Ashwin ";
+                // Custom responses for "Who created you?", "How were you made?", etc.
+                let lowerInput = userInput.toLowerCase();
+                if (lowerInput.includes("who created you") || lowerInput.includes("how were you created") || lowerInput.includes("how were you made")) {
+                    botResponse = "I was made by Ashwin.";
                 }
 
                 chatHistory.push({ role: "assistant", content: botResponse });
