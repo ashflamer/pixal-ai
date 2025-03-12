@@ -117,10 +117,14 @@
                 let data = await response.json();
                 let botResponse = data.choices[0].message.content || "Sorry, PIXAL AI couldn't understand that.";
 
-                // Custom responses for "Who created you?", "How were you made?", etc.
                 let lowerInput = userInput.toLowerCase();
+
+                // Custom responses
                 if (lowerInput.includes("who created you") || lowerInput.includes("how were you created") || lowerInput.includes("how were you made")) {
                     botResponse = "I was made by Ashwin.";
+                } 
+                else if (lowerInput.includes("what is your name") || lowerInput.includes("who are you") || lowerInput.includes("your name")) {
+                    botResponse = "I am PIXAL AI. My name was inspired by the LEGO Ninjago character PIXAL, which stands for Primary Interactive X-ternal Assistant Life-form.";
                 }
 
                 chatHistory.push({ role: "assistant", content: botResponse });
