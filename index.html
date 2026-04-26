@@ -1,42 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Search Console Ownership -->
-    <meta name="google-site-verification" content="google-site-verification-token-here" />
+    <meta name="google-site-verification" content="pixal-ai-verification-2026-ashwin" />
     
-    <!-- PIXAL AI SEO Meta Tags -->
-    <meta name="description" content="PIXAL AI is a free AI chatbot made by Ashwin. Chat with PIXAL AI for smart conversations and instant answers!">
-    <meta name="keywords" content="PIXAL AI, AI Chatbot, Chatbot Online, AI Chat, Groq API Chatbot, Ashwin Chatbot, PIXAL GPT, ChatGPT Alternative">
+    <meta name="description" content="PIXAL AI is a free AI chatbot made by Ashwin. Powered by Llama 3 8B via Groq.">
+    <meta name="keywords" content="PIXAL AI, AI Chatbot, Ashwin, Llama 3, Groq API, AI Chat">
     <meta name="author" content="Ashwin">
-    <meta name="robots" content="index, follow">
-
-    <!-- Open Graph for Social Sharing -->
-    <meta property="og:title" content="PIXAL AI - Official Chatbot">
-    <meta property="og:description" content="PIXAL AI is a smart AI chatbot built by Ashwin. Start chatting now!">
-    <meta property="og:url" content="https://ashflamer.github.io/pixal-ai/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://ashflamer.github.io/pixal-ai/logo.png">
-
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PIXAL AI - Powered by Llama 3 8B</title>
+    <title>PIXAL AI - Powered by Llama 8B</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
     <style>
         :root {
-            --bg-color: #0d1117;
-            --container-bg: #161b22;
-            --accent-color: #58a6ff;
-            --user-bubble: #1f6feb;
-            --ai-bubble: #21262d;
-            --text-color: #c9d1d9;
+            --primary: #58a6ff;
+            --bg: #0d1117;
+            --card: #161b22;
+            --border: #30363d;
+            --text: #c9d1d9;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background: var(--bg);
+            color: var(--text);
             margin: 0;
             display: flex;
             justify-content: center;
@@ -44,34 +34,31 @@
             height: 100vh;
         }
 
-        .chat-card {
+        .chat-container {
             width: 95%;
-            max-width: 700px;
+            max-width: 750px;
             height: 85vh;
-            background: var(--container-bg);
-            border-radius: 16px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
             display: flex;
             flex-direction: column;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
-            border: 1px solid #30363d;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
         }
 
         .header {
-            padding: 20px;
+            padding: 15px 25px;
             background: #21262d;
-            border-bottom: 1px solid #30363d;
-            text-align: center;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .header h1 {
-            margin: 0;
-            font-size: 1.5rem;
-            color: var(--accent-color);
-            letter-spacing: 1px;
-        }
+        .header h1 { font-size: 1.2rem; margin: 0; color: var(--primary); }
 
-        #chat-display {
+        #chat-window {
             flex: 1;
             overflow-y: auto;
             padding: 20px;
@@ -80,54 +67,51 @@
             gap: 15px;
         }
 
-        .msg {
+        .message {
             max-width: 80%;
-            padding: 12px 16px;
+            padding: 12px 18px;
             border-radius: 15px;
             font-size: 0.95rem;
             line-height: 1.5;
+            word-wrap: break-word;
         }
 
         .user-msg {
             align-self: flex-end;
-            background-color: var(--user-bubble);
+            background: #1f6feb;
             color: white;
             border-bottom-right-radius: 2px;
         }
 
         .ai-msg {
             align-self: flex-start;
-            background-color: var(--ai-bubble);
-            color: var(--text-color);
-            border: 1px solid #30363d;
+            background: #21262d;
+            border: 1px solid var(--border);
             border-bottom-left-radius: 2px;
         }
 
-        .input-area {
+        .input-box {
             padding: 20px;
-            background: #161b22;
+            background: var(--card);
+            border-top: 1px solid var(--border);
             display: flex;
-            gap: 10px;
-            border-top: 1px solid #30363d;
+            gap: 12px;
         }
 
         input {
             flex: 1;
             background: #0d1117;
-            border: 1px solid #30363d;
-            padding: 12px 15px;
+            border: 1px solid var(--border);
+            padding: 12px;
             border-radius: 8px;
             color: white;
             outline: none;
-            font-size: 1rem;
         }
 
-        input:focus {
-            border-color: var(--accent-color);
-        }
+        input:focus { border-color: var(--primary); }
 
         button {
-            background: var(--accent-color);
+            background: var(--primary);
             color: #0d1117;
             border: none;
             padding: 0 20px;
@@ -137,84 +121,81 @@
             transition: 0.2s;
         }
 
-        button:hover {
-            opacity: 0.9;
-            transform: scale(1.02);
-        }
+        button:hover { opacity: 0.9; }
+        button:disabled { background: #30363d; cursor: not-allowed; }
 
-        /* Styling the scrollbar */
-        #chat-display::-webkit-scrollbar { width: 6px; }
-        #chat-display::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #30363d; border-radius: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="chat-card">
+    <div class="chat-container">
         <div class="header">
-            <h1>PIXAL AI</h1>
-            <small style="color: #8b949e;">Powered by Ashwin & Llama 3</small>
+            <h1><i class="fas fa-robot"></i> PIXAL AI</h1>
+            <span style="font-size: 0.8rem; opacity: 0.7;">Llama 3 8B</span>
         </div>
 
-        <div id="chat-display">
-            <div class="msg ai-msg">Hi! I'm PIXAL. How can I help you today?</div>
+        <div id="chat-window">
+            <div class="message ai-msg">Welcome to PIXAL AI. How can I assist you today?</div>
         </div>
 
-        <div class="input-area">
-            <input type="text" id="userInput" placeholder="Ask me anything..." onkeypress="if(event.key === 'Enter') sendMessage()">
-            <button onclick="sendMessage()">Send</button>
+        <div class="input-box">
+            <input type="text" id="userInput" placeholder="Message PIXAL AI..." autocomplete="off">
+            <button id="sendBtn" onclick="askPIXAL()">Send</button>
         </div>
     </div>
 
     <script>
-        // API Key and Configuration
-        const API_KEY = "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";
-        const MODEL = "llama3-8b-8192";
+        const KEY = "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";
 
-        async function sendMessage() {
-            const inputElement = document.getElementById("userInput");
-            const chatDisplay = document.getElementById("chat-display");
-            const query = inputElement.value.trim();
+        document.getElementById('userInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') askPIXAL();
+        });
 
-            if (!query) return;
+        async function askPIXAL() {
+            const input = document.getElementById("userInput");
+            const window = document.getElementById("chat-window");
+            const btn = document.getElementById("sendBtn");
+            const text = input.value.trim();
 
-            // Add User Message to UI
-            appendMessage(query, 'user-msg');
-            inputElement.value = "";
+            if (!text) return;
+
+            // UI Update
+            window.innerHTML += `<div class="message user-msg">${text}</div>`;
+            input.value = "";
+            btn.disabled = true;
+            window.scrollTop = window.scrollHeight;
 
             try {
                 const response = await fetch("https://api.groq.com/openai/v1/chat/completions", {
                     method: "POST",
                     headers: {
-                        "Authorization": `Bearer ${API_KEY}`,
+                        "Authorization": `Bearer ${KEY}`,
                         "Content-Type": "application/json"
                     },
                     body: JSON.stringify({
-                        model: MODEL,
-                        messages: [{ role: "user", content: query }],
-                        temperature: 0.7,
-                        max_tokens: 1024
+                        model: "llama3-8b-8192",
+                        messages: [{ role: "user", content: text }]
                     })
                 });
 
                 const data = await response.json();
-                const aiText = data.choices[0].message.content;
+                
+                if(data.choices && data.choices[0]) {
+                    const aiReply = data.choices[0].message.content;
+                    window.innerHTML += `<div class="message ai-msg">${aiReply}</div>`;
+                } else {
+                    throw new Error("Invalid response from Brain.");
+                }
 
-                // Add AI Message to UI
-                appendMessage(aiText, 'ai-msg');
-
-            } catch (error) {
-                console.error("Error:", error);
-                appendMessage("Oops! Something went wrong. Please check your connection.", 'ai-msg');
+            } catch (err) {
+                window.innerHTML += `<div class="message ai-msg" style="color: #ff7b72;">Connection Issue: Check if the API key is active in your Groq dashboard.</div>`;
+            } finally {
+                btn.disabled = false;
+                window.scrollTop = window.scrollHeight;
             }
-        }
-
-        function appendMessage(text, className) {
-            const chatDisplay = document.getElementById("chat-display");
-            const msgDiv = document.createElement("div");
-            msgDiv.className = `msg ${className}`;
-            msgDiv.innerText = text;
-            chatDisplay.appendChild(msgDiv);
-            chatDisplay.scrollTop = chatDisplay.scrollHeight;
         }
     </script>
 </body>
